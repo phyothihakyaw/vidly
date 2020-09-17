@@ -1,4 +1,5 @@
-# Vidly ![/aur/last-modified/:packageName] (https://img.shields.io/eclipse-marketplace/last-update/vidly?logoColor=%2317cf48)
+# Vidly 
+![alt text] (https://img.shields.io/eclipse-marketplace/last-update/vidly?logoColor=%2317cf48)
 A video renting app build with ASP.NET Core MVC
 
 ##Introduction
