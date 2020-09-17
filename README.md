@@ -1,7 +1,7 @@
 # Vidly ![last commit](https://img.shields.io/github/last-commit/phyothihakyaw/Vidly)
 A video renting app build with ASP.NET Core MVC
 
-##Introduction
+## Introduction
 This is my first time learning about ASP.NET Core. I will make a lists about topic I want to cover in this simple app. You can learn together with me.
 
 ## Topics to cover
