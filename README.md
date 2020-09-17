@@ -1,5 +1,4 @@
-# Vidly 
-![npm package](https://img.shields.io/badge/npm%20package-v1-brightgreen.svg)
+# Vidly ![last commit](https://img.shields.io/github/last-commit/phyothihakyaw/Vidly)
 A video renting app build with ASP.NET Core MVC
 
 ##Introduction
