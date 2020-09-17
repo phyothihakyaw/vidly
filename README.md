@@ -2,7 +2,7 @@
 A video renting app build with ASP.NET Core MVC
 
 ## Introduction
-This is my first time learning about ASP.NET Core. I will make a lists about topic I want to cover in this simple app. You can learn together with me.
+This is my first time learning about ASP.NET Core. I will make a list about topics I want to cover in this simple app. You can learn together with me.
 
 ## Topics to cover
 
