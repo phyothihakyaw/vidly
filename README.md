@@ -1,5 +1,5 @@
 # Vidly 
-![alt text] (https://img.shields.io/eclipse-marketplace/last-update/vidly?logoColor=%2317cf48)
+![npm package](https://img.shields.io/badge/npm%20package-v1-brightgreen.svg)
 A video renting app build with ASP.NET Core MVC
 
 ##Introduction
