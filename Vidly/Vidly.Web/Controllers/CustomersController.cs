@@ -24,6 +24,23 @@ namespace Vidly.Web.Controllers
             return View(await customers.ToListAsync());
         }
 
+        // GET : Customers/Details/{id}
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var customer = await _context.Customers
+                .Include(c => c.MembershipType)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (customer == null)
+                return NotFound();
+            
+
+            return View(customer);
+        }
+
         // GET : Customers/New
         public async Task<IActionResult> New()
         {
