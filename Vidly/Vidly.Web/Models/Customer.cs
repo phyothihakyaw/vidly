@@ -13,7 +13,6 @@ namespace Vidly.Web.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
-        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Subscribe to newsletter?")]
