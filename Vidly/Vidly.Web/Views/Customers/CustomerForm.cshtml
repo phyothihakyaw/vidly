@@ -1,0 +1,51 @@
+﻿@model Vidly.Web.ViewModels.CustomerViewModel
+@{
+    ViewData["Title"] = "CustomerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customer Form</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@((Model.Customer.Id == 0) ? "Add" : "Save")">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Customer.Name"></label>
+                <input type="text" asp-for="Customer.Name" class="form-control" />
+                <span asp-validation-for="Customer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.MembershipTypeId"></label>
+                <select asp-for="Customer.MembershipTypeId" class="form-control" asp-items="Model.MembershipTypes">
+                    <option value="">Select a membership type</option>
+                </select>
+                <span asp-validation-for="Customer.MembershipTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.BirthDate"></label>
+                <input type="date" asp-format="{0:d MMM yyyy}" asp-for="Customer.BirthDate" class="form-control" />
+                <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Customer.IsSubscribedToNewsletter" /> @Html.DisplayNameFor(model => model.Customer.IsSubscribedToNewsletter)
+                </label>
+            </div>
+            <div>
+                <input type="hidden" asp-for="Customer.Id" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@((Model.Customer.Id == 0) ? "Add" : "Save")" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </form>
+        <a asp-action="Index" class="btn btn-lg btn-block btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

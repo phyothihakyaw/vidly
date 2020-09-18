@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using Vidly.Web.Models;
 
 namespace Vidly.Web.ViewModels
 {
     public class CustomerViewModel
     {
-        public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        public List<SelectListItem> MembershipTypes { get; set; }
         public Customer Customer { get; set; }
     }
 }

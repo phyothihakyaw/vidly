@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Vidly.Web.Models
 {
@@ -16,5 +18,17 @@ namespace Vidly.Web.Models
         public byte DurationInMonths { get; set; }
 
         public byte DiscountRate { get; set; }
+
+        public static List<SelectListItem> ConvertToSelectListItem(List<MembershipType> membershipTypes)
+        {
+            return membershipTypes.ConvertAll(m =>
+            {
+                return new SelectListItem
+                {
+                    Text = m.Name,
+                    Value = m.Id.ToString()
+                };
+            });
+        }
     }
 }

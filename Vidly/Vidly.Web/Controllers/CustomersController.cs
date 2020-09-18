@@ -30,10 +30,25 @@ namespace Vidly.Web.Controllers
             var viewModel = new CustomerViewModel
             {
                 Customer = new Customer(),
-                MembershipTypes = membershipTypes
+                MembershipTypes = MembershipType.ConvertToSelectListItem(membershipTypes)
             };
 
             return View("CustomerForm", viewModel);
+        }
+
+        // POST : Customers/Save
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Add([Bind("Id,Name,Birthdate,MembershipTypeId")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(customer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(customer);
         }
     }
 }
