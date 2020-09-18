@@ -36,7 +36,7 @@ namespace Vidly.Web.Controllers
 
             if (customer == null)
                 return NotFound();
-            
+
 
             return View(customer);
         }
@@ -50,6 +50,7 @@ namespace Vidly.Web.Controllers
                 Customer = new Customer(),
                 MembershipTypes = MembershipType.ConvertToSelectListItem(membershipTypes)
             };
+            ViewData["Title"] = "Add new customer";
 
             return View("CustomerForm", viewModel);
         }
@@ -85,6 +86,8 @@ namespace Vidly.Web.Controllers
                 Customer = customer,
                 MembershipTypes = MembershipType.ConvertToSelectListItem(membershipTypes)
             };
+
+            ViewData["Title"] = "Edit customer";
 
             return View("CustomerForm", viewModel);
         }
