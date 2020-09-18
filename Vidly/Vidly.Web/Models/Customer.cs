@@ -11,7 +11,9 @@ namespace Vidly.Web.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
+        [DisplayFormat(DataFormatString = "{0:d MMM yyyy}")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Subscribe to newsletter?")]
