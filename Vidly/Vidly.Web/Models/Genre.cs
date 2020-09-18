@@ -8,6 +8,7 @@ namespace Vidly.Web.Models
 
         [Required]
         [Display(Name = "Genre")]
+        [StringLength(255)]
         public string Name { get; set; }
     }
 }
