@@ -16,12 +16,17 @@
         <dd class="col-sm-8">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class="col-sm-4">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class="col-sm-8">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
+
+        @if (Model.BirthDate != null)
+        {
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.BirthDate)
+            </dd>
+        }
+
         <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.IsSubscribedToNewsletter)
         </dt>

@@ -13,6 +13,7 @@ namespace Vidly.Web.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
+        [Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Subscribe to newsletter?")]

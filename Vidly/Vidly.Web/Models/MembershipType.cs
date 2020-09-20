@@ -19,7 +19,7 @@ namespace Vidly.Web.Models
 
         public byte DiscountRate { get; set; }
 
-        public static List<SelectListItem> ConvertToSelectListItem(List<MembershipType> membershipTypes)
+        internal static List<SelectListItem> ConvertToSelectListItem(List<MembershipType> membershipTypes)
         {
             return membershipTypes.ConvertAll(m =>
             {
@@ -30,5 +30,8 @@ namespace Vidly.Web.Models
                 };
             });
         }
+
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo = 1;
     }
 }

@@ -55,19 +55,26 @@ namespace Vidly.Web.Controllers
             return View("CustomerForm", viewModel);
         }
 
-        // POST : Customers/Save
+        // POST : Customers/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add([Bind("Id,Name,Birthdate,IsSubscribedToNewsletter,MembershipTypeId")] Customer customer)
+        public async Task<IActionResult> Add([Bind("Id,Name,BirthDate,IsSubscribedToNewsletter,MembershipTypeId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Customers.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(customer);
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = MembershipType.ConvertToSelectListItem(await _context.MembershipTypes.ToListAsync())
+            };
+            ViewData["Title"] = "Add new customer";
+
+            return View("CustomerForm", viewModel);
         }
 
         // GET : Customers/Edit/{id}
@@ -122,7 +129,13 @@ namespace Vidly.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(customer);
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = MembershipType.ConvertToSelectListItem(await _context.MembershipTypes.ToListAsync())
+            };
+            ViewData["Title"] = "Edit customer";
+            return View("CustomerForm", viewModel);
         }
 
         private bool CustomerExists(int id)
