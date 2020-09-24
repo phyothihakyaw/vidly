@@ -19,11 +19,10 @@ namespace Vidly.Web.Controllers
         }
 
         // GET : Movies
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
 
-            return View(movies);
+            return View();
         }
 
         // GET : Movies/Details/{id}

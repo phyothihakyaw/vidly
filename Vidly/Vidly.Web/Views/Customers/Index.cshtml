@@ -10,58 +10,51 @@
     <a asp-action="New" class="btn btn-primary mb-2 mt-2">Add new customer</a>
 </p>
 
-@if (!Model.Any())
-{
-    <p>No customers added yet.</p>
-}
-else
-{
-    <table id="customers" class="table table-hover">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.MembershipType.Name)
-                </th>
-                <th scope="col">
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MembershipType.Name)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-link">
-                            <i class="fas fa-user-edit" data-toggle="tooltip" data-placement="top" title="Edit user"></i>
-                        </a> &nbsp; | &nbsp;
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-link">
-                            <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Go to details"></i>
-                        </a> &nbsp; | &nbsp;
-                        <button data-customer-id="@item.Id" class="btn btn-link js-delete">
-                            <i class="fas fa-trash" data-toggle="tooltip" data-placement="top" title="Delete customer"></i>
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<table id="customers" class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.MembershipType.Name)
+            </th>
+            <th scope="col">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
 @section Scripts {
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
 
-            $('#customers').DataTable();
+            var table = $('#customers').DataTable({
+                ajax: {
+                    url: '/api/customers',
+                    dataSrc: ''
+                },
+                columns: [
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'membershipType.name'
+                    },
+                    {
+                        render: function (data, type, customer) {
+                            return "<a class='btn btn-link' href='/customers/edit/" + customer.id + "'><i class='fas fa-user-edit' data-toggle='tooltip' data-placement='top' title='Edit user'></i></a>"
+                                + "&nbsp; | &nbsp;"
+                                + "<a  class='btn btn-link' href='/customers/details/" + customer.id + "'><i class='fas fa-info-circle' data-toggle='tooltip' data-placement='top' title='User details'></i></a>"
+                                + "&nbsp; | &nbsp;"
+                                + "<button class='btn btn-link js-delete' data-customer-id=" + customer.id + "><i class='fas fa-trash' data-toggle='tooltip' data-placement='top' title='Delete user'></i></button>";
+                        }
+                    }
+                ]
+            });
 
             $('#customers').on('click', '.js-delete', function () {
                 var button = $(this);
@@ -84,7 +77,7 @@ else
                                 url: "/api/customers/" + button.attr('data-customer-id'),
                                 method: "DELETE",
                                 success: function () {
-                                    button.parents('tr').remove();
+                                    table.row(button.parents('tr')).remove().draw();
                                 }
                             })
                         };

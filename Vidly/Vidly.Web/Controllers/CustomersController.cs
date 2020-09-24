@@ -18,10 +18,10 @@ namespace Vidly.Web.Controllers
         }
 
         // GET : Customers
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType);
-            return View(await customers.ToListAsync());
+
+            return View();
         }
 
         // GET : Customers/Details/{id}

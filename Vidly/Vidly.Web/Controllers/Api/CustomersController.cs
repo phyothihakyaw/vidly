@@ -27,7 +27,11 @@ namespace Vidly.Web.Controllers.Api
         [HttpGet]
         public ActionResult<IEnumerable<CustomerDto>> GetCustomers()
         {
-            var customersDtos = _context.Customers.ToList().Select(_mapper.Map<Customer, CustomerDto>);
+            var customersDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(_mapper.Map<Customer, CustomerDto>);
+
             return Ok(customersDtos);
         }
 
@@ -96,7 +100,7 @@ namespace Vidly.Web.Controllers.Api
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Customer>> DeleteCustomer(int id)
+        public async Task<ActionResult<CustomerDto>> DeleteCustomer(int id)
         {
             var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
@@ -107,7 +111,9 @@ namespace Vidly.Web.Controllers.Api
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
 
-            return customer;
+            var customerDto = _mapper.Map<Customer, CustomerDto>(customer);
+
+            return Ok(customerDto);
         }
 
         private bool CustomerExists(int id)
