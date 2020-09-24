@@ -109,6 +109,7 @@ namespace Vidly.Web.Controllers
                 {
                     var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
 
+                    // Using _context.Update() will bind more fields from viewmodel
                     movieInDb.Name = movie.Name;
                     movieInDb.GenreId = movie.GenreId;
                     movieInDb.ReleasedDate = movie.ReleasedDate;
