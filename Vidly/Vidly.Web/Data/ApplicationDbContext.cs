@@ -4,7 +4,7 @@ using Vidly.Web.Models;
 
 namespace Vidly.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Genre> Genres { get; set; }
