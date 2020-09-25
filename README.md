@@ -10,7 +10,6 @@ This is my first time learning about ASP.NET Core. I will make a list about topi
  - [x] Routing
  - [x] Models
  - [x] Controllers
- - [ ] Razor Pages
- - [ ] Bundling stuffs
- - [ ] Model Binding
- - [ ] Validation (Client/Server side)
+ - [x] Razor Pages
+ - [x] Model Binding
+ - [x] Validation (Client/Server side)
