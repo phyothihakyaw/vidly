@@ -13,6 +13,10 @@
     <Compile Remove="Data\Migrations\20200918051751_EditMembershipTypes.Designer.cs" />
     <Compile Remove="Data\Migrations\20200918052115_PopulateMembershipTypes.cs" />
     <Compile Remove="Data\Migrations\20200918052115_PopulateMembershipTypes.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200925083154_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20200925083154_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200925091714_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20200925091714_ExtendIdentityUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

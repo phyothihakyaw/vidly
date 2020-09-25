@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Vidly.Web.Models;
 
 namespace Vidly.Web.Controllers.Api
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MoviesController : ControllerBase
@@ -31,6 +33,7 @@ namespace Vidly.Web.Controllers.Api
             return Ok(movies);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         //DELETE : /api/movies/{id}
         [HttpDelete("{id}")]
         public ActionResult<MovieDto> DeleteMovie(int id)

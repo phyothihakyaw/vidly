@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -21,8 +22,10 @@ namespace Vidly.Web.Controllers
         // GET : Movies
         public IActionResult Index()
         {
+            if (User.IsInRole("CanManageMovies"))
+                return View();
 
-            return View();
+            return View("ReadonlyIndex");
         }
 
         // GET : Movies/Details/{id}
@@ -38,6 +41,7 @@ namespace Vidly.Web.Controllers
             return View(movie);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         // GET : Movies/New
         public async Task<IActionResult> New()
         {
@@ -52,6 +56,7 @@ namespace Vidly.Web.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         // POST : Movies/Add
         [HttpPost]
         public async Task<IActionResult> Add([Bind("Id,Name,GenreId,ReleasedDate,NumberInStock")] Movie movie)
@@ -75,6 +80,7 @@ namespace Vidly.Web.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         // GET : Movies/Edit/{id}
         public async Task<IActionResult> Edit(int? id)
         {
@@ -95,6 +101,7 @@ namespace Vidly.Web.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         // POST : Movies/Save
         [HttpPost]
         public async Task<IActionResult> Save(int id, [Bind("Id,Name,GenreId,ReleasedDate,NumberInStock")] Movie movie)
