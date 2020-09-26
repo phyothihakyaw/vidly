@@ -64,6 +64,7 @@ namespace Vidly.Web.Controllers
             if (ModelState.IsValid)
             {
                 movie.AddedDate = DateTime.Now;
+                movie.NumberAvailable = movie.NumberInStock;
                 _context.Movies.Add(movie);
                 await _context.SaveChangesAsync();
 

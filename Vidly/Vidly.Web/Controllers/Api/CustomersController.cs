@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,10 +28,15 @@ namespace Vidly.Web.Controllers.Api
 
         // GET: api/Customers
         [HttpGet]
-        public ActionResult<IEnumerable<CustomerDto>> GetCustomers()
+        public ActionResult<IEnumerable<CustomerDto>> GetCustomers(string query = null)
         {
-            var customersDtos = _context.Customers
-                .Include(c => c.MembershipType)
+            IQueryable<Customer> customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customersDtos = customersQuery    
                 .ToList()
                 .Select(_mapper.Map<Customer, CustomerDto>);
 

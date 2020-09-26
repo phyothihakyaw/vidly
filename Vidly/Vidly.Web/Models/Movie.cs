@@ -24,5 +24,6 @@ namespace Vidly.Web.Models
 
         [Display(Name = "Genre")]
         public byte GenreId { get; set; }
+        public byte NumberAvailable { get; set; }
     }
 }

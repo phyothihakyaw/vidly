@@ -36,12 +36,6 @@ namespace Vidly.Web
               .AddDefaultUI()
               .AddDefaultTokenProviders();
 
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            });
-
             services.AddMvc(options =>
             {
                 var policy = new AuthorizationPolicyBuilder()
