@@ -2,34 +2,46 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="center">
+<div class="container justify-content-center">
     <div class="mb-4">
         <h2 class="text-center">Welcome to Vidly</h2>
         <p class="text-center">A simple video renting application built with ASP.NET Core MVC.</p>
     </div>
-    <div class="row w-100 justify-content-around">
-        <div class="justify-content-lg-start">
-            <h4 class="mb-3">Core Technology Stack</h4>
-            <ul class="list-group list-group-flush">
-                <li class="p-1 list-group-item">C#</li>
-                <li class="p-1 list-group-item">.NET Core</li>
-                <li class="p-1 list-group-item">HTML</li>
-                <li class="p-1 list-group-item">CSS</li>
-                <li class="p-1 list-group-item">Javascript</li>
-            </ul>
-        </div>
-        <div class="justify-content-lg-end">
-            <h4 class="mb-3">Framework, Libraries and Plugins</h4>
-            <ul class="list-group list-group-flush">
-                <li class="p-1 list-group-item">ASP.NET Core, EntityFramework Core</li>
-                <li class="p-1 list-group-item">Automapper</li>
-                <li class="p-1 list-group-item">Bootstrap</li>
-                <li class="p-1 list-group-item">jQuery</li>
-                <li class="p-1 list-group-item">Datatables, Toastr, Typeahead, Bootbox</li>
-            </ul>
+    <hr />
+
+    <div class="container mb-5">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal text-center">Core Technology Stack</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li class="text-center">C#</li>
+                        <li class="text-center">.Net Core</li>
+                        <li class="text-center">HTML</li>
+                        <li class="text-center">CSS</li>
+                        <li class="text-center">Javascript</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal text-center">Framework, Libraries and Plugins</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li class="text-center">ASP.NET Core, EntityFramework Core</li>
+                        <li class="text-center">Automapper</li>
+                        <li class="text-center">Bootstrap</li>
+                        <li class="text-center">jQuery</li>
+                        <li class="text-center">Datatables, Toastr, Bootbox, Typeahead</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <hr />
+
     <div class="card" style="width: 100%; line-height : 1.5em">
         <div class="card-body">
             <h5 class="card-title text-center">Start Using Now?</h5>
@@ -45,17 +57,19 @@
 </div>
 
 <style>
-    .center {
-        position: absolute;
-        width: 60%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 30px;
-        line-height: 3em;
+    body {
+        height: 100%;
+    }
+
+    body {
+        align-items: center;
     }
 
     li {
         list-style: none
+    }
+
+    button {
+        margin: 1em;
     }
 </style>
