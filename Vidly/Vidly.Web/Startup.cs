@@ -38,8 +38,8 @@ namespace Vidly.Web
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = "368573917608373";
-                facebookOptions.AppSecret = "f9e306aa1052c06b573afd86bcaf7ace";
+                facebookOptions.AppId = "682416136037544";
+                facebookOptions.AppSecret = "ed7b8bef5f76a64b6ef4e11b53f2607a";
             });
 
             services.AddMvc(options =>
