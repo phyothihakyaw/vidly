@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using NLog.Web;
+using System;
 
 namespace Vidly.Web
 {
@@ -13,7 +9,26 @@ namespace Vidly.Web
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var isDev = string.Equals(environment, "development", StringComparison.InvariantCultureIgnoreCase);
+            var configFileName = isDev ? "nlog.Development.config" : "nlog.config";
+
+            var logger = NLogBuilder.ConfigureNLog(configFileName).GetCurrentClassLogger();
+
+            logger.Info("Starting application. {Environment}, {LoggingConfigurationFileName}", environment, configFileName);
+
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, "Failed to start application", e);
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

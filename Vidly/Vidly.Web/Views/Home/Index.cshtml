@@ -2,7 +2,60 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="center">
+    <div class="mb-4">
+        <h2 class="text-center">Welcome to Vidly</h2>
+        <p class="text-center">A simple video renting application built with ASP.NET Core MVC.</p>
+    </div>
+    <div class="row w-100 justify-content-around">
+        <div class="justify-content-lg-start">
+            <h4 class="mb-3">Core Technology Stack</h4>
+            <ul class="list-group list-group-flush">
+                <li class="p-1 list-group-item">C#</li>
+                <li class="p-1 list-group-item">.NET Core</li>
+                <li class="p-1 list-group-item">HTML</li>
+                <li class="p-1 list-group-item">CSS</li>
+                <li class="p-1 list-group-item">Javascript</li>
+            </ul>
+        </div>
+        <div class="justify-content-lg-end">
+            <h4 class="mb-3">Framework, Libraries and Plugins</h4>
+            <ul class="list-group list-group-flush">
+                <li class="p-1 list-group-item">ASP.NET Core, EntityFramework Core</li>
+                <li class="p-1 list-group-item">Automapper</li>
+                <li class="p-1 list-group-item">Bootstrap</li>
+                <li class="p-1 list-group-item">jQuery</li>
+                <li class="p-1 list-group-item">Datatables, Toastr, Typeahead, Bootbox</li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div class="card" style="width: 100%; line-height : 1.5em">
+        <div class="card-body">
+            <h5 class="card-title text-center">Start Using Now?</h5>
+            <p class="card-text text-center">You can login with built in admin account with <b>Email : admin@mail.com</b> and <b>password : Admin@123</b> </p>
+            <p class="card-text text-center">For guest user you can login with <b>Email : guest@mail.com</b> and <b>passowrd : Guest@123</b></p>
+            <p class="card-text text-center">Or you can register your own account and test!</p>
+            <div class="row justify-content-center">
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-lg btn-primary" style="margin : auto 0;">Login</a> &nbsp;
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg btn-primary" style="margin : auto 0;">Register</a>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .center {
+        position: absolute;
+        width: 60%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        line-height: 3em;
+    }
+
+    li {
+        list-style: none
+    }
+</style>
