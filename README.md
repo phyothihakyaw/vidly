@@ -12,4 +12,6 @@ This is my first time learning about ASP.NET Core. I will make a list about topi
  - [x] Controllers
  - [x] Razor Pages
  - [x] Model Binding
- - [x] Validation (Client/Server side)
+ - [x] Validation (Client/Server side/Custom)
+ - [x] Authentication & Authorization
+ - [x] Web API(basic)
